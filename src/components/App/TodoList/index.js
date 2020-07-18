@@ -3,7 +3,7 @@ import React from 'react';
 import s from './styles.module.css';
 import {TodoItem} from "./TodoItem";
 
-export const TodoList = ({ items, onClickDone, onClickDelete }) =>{
+export const TodoList = ({ items, handleClickDone, handleClickDelete }) =>{
     return (
         <div className={s.wrap}>
             {items.map(item =>
@@ -12,8 +12,8 @@ export const TodoList = ({ items, onClickDone, onClickDelete }) =>{
                 value={item.value}
                 isDone={item.isDone}
                 id={item.id}
-                onClickDone={onClickDone}
-                onClickDelete={onClickDelete}
+                onClickDone={handleClickDone}
+                onClickDelete={handleClickDelete}
             />)}
         </div>
     );

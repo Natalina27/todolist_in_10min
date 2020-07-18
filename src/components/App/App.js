@@ -1,8 +1,8 @@
 import React, {useState} from 'react';
-import { TodoList } from "./TodoList";
+import {TodoList} from "./TodoList";
 import {Footer} from "./TodoList/Footer";
 
-import s from  './App.module.css';
+import s from './App.module.css';
 import {InputItem} from "./TodoList/InputItem";
 
 
@@ -11,17 +11,17 @@ export function App() {
     const InitialState = {
         items: [
             {
-                value: 'CREATE NEW APP',
+                value: 'WAKE UP AT 5.30',
                 isDone: false,
                 id: 1
             },
             {
-                value: 'INSERT PROPS',
+                value: 'DRINK 2 GLASSES OF WATER',
                 isDone: false,
                 id: 2
             },
             {
-                value: 'DO ALL TASKS',
+                value: 'TAKE A BREAKFAST',
                 isDone: false,
                 id: 3
             }
@@ -32,9 +32,9 @@ export function App() {
     const itemId = InitialState.items.length;
 
 
-    const onClickDone = (id) => {
+    const handleClickDone = (id) => {
         const newItemList = itemsArr.map(item => {
-            const newItem = { ...item };
+            const newItem = {...item};
             if (item.id === id) {
                 newItem.isDone = !item.isDone;
             }
@@ -43,45 +43,43 @@ export function App() {
         setItemsArr(newItemList);
     };
 
-    const onClickDelete = (id) => {
+    const handleClickDelete = (id) => {
         const newItemList = itemsArr.filter(item => item.id !== id);
         setItemsArr(newItemList);
     };
 
-    const onClickAdd = (value) => {
+    const handleClickAdd = (value) => {
         setItemsArr(
-            [...itemsArr,
-                {
+            [...itemsArr, {
                     value,
                     isDone: false,
                     id: itemId + 1
-                }
-            ]
-        );
+                }]
+        )
     };
 
     const itemsDone = itemsArr.filter((el) => el.isDone).length;
     const itemsTodo = itemsArr.length - itemsDone;
 
     return (
-            <div className={s.wrap}>
-                <h1 className={s.title}> TO-DO LIST:</h1>
-                <InputItem
+        <div className={s.wrap}>
+            <h1 className={s.title}> TO-DO LIST:</h1>
+            <InputItem
+                items={itemsArr}
+                onClickAdd={handleClickAdd}
+            />
+            <div>
+                <TodoList
                     items={itemsArr}
-                    onClickAdd={onClickAdd}
-                />
-                <div>
-                    <TodoList
-                        items={itemsArr}
-                        onClickDone={onClickDone}
-                        onClickDelete={onClickDelete}
-                    />
-                </div>
-                <Footer
-                    itemsTodo={itemsTodo}
-                    itemsDone={itemsDone}
+                    onClickDone={handleClickDone}
+                    onClickDelete={handleClickDelete}
                 />
             </div>
+            <Footer
+                itemsTodo={itemsTodo}
+                itemsDone={itemsDone}
+            />
+        </div>
     );
 }
 

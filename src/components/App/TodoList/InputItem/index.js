@@ -55,9 +55,10 @@ export class InputItem extends React.Component {
 
                 />
 
-                <button onClick={() => this.onInputHandler({ items, onClickAdd })}>
-                    Add
-                </button>
+                <button
+                    className={s.btn}
+                    onClick={() => this.onInputHandler({ items, onClickAdd })}
+                >Add</button>
             </form>
         );
     }
