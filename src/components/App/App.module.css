@@ -1,0 +1,16 @@
+.wrap{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 30px;
+  height: 400px;
+  width: 750px;
+  padding: 10px;
+  border: black 1px solid;
+}
+.title{
+  padding: 10px;
+  margin: 0;
+  font-family: "Apple SD Gothic Neo", sans-serif;
+}
