@@ -1,7 +1,12 @@
 import React, {useState} from 'react';
 import {v4 as uuid} from 'uuid';
+import {TodoForm} from './TodoForm';
+import {TodoList} from './TodoList';
+import {Footer} from './Footer';
 
 import s from './App.module.css';
+
+
 
 const initialState = [
     {
